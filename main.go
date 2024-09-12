@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	routes "go-jwt-project/routes"
+	"go-jwt-project/routes"
 	"log"
 	"os"
 )
@@ -33,5 +33,8 @@ func main() {
 		c.JSON(200, gin.H{"success": "Access granted for api-2"})
 	})
 
-	router.Run(":" + port)
+	err = router.Run(":" + port)
+	if err != nil {
+		return
+	}
 }
